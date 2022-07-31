@@ -2,3 +2,5 @@
 # .vscode
 .tmp/*
 */.tmp/*
+*/.tmp
+source
