@@ -24,9 +24,9 @@ void Permutation(int L[],int left,int right){
         printf("\n");
     }else{
         for(int i=left;i<=right;i++){
-            rightShift(L,left,i);
+            rightShift(L,left,i); // 整体右移
             Permutation(L,left+1,right);
-            leftShift(L,left,i);
+            leftShift(L,left,i); // 整体左移
         }
     }
 }
