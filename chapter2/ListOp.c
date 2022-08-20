@@ -1,3 +1,10 @@
+List Create(ElementType e)
+{
+    List L = (List)malloc(sizeof(struct Node));
+    L->Data = e;
+    L->Next = NULL;
+    return L;
+}
 List Read()
 {
     int n;
