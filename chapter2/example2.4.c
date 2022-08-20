@@ -24,23 +24,16 @@ List Create(ElementType e)
 }
 List Insert(List L, ElementType X)
 {
-    List p = L, pre = NULL, cell;
-    while (p && p->Data < X)
-    {
-        pre = p;
-        p = p->Next;
+    List pre=L,cell=Create(X);
+    while(pre->Next){
+        if(pre->Next->Data>X){
+            break;
+        }else{
+            pre=pre->Next;
+        }
     }
-    cell = Create(X);
-    if (pre == NULL)
-    { // 头插入
-        cell->Next = L->Next;
-        L->Next = cell;
-    }
-    else
-    {
-        cell->Next=pre->Next;
-        pre->Next=cell;
-    }
+    cell->Next=pre->Next;
+    pre->Next=cell;
     return L;
 }
 
