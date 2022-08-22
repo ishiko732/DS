@@ -37,3 +37,32 @@ void Print(List L)
     }
     printf("%d\n", p->Data);
 }
+
+List Read_NoHead()
+{
+    int n;
+    ElementType e;
+    List L,p,cell;
+    scanf("%d", &n);
+    scanf("%d", &e);
+    L = Create(e);
+    p =L;
+    for (int i = 1; i < n; i++)
+    {
+        scanf("%d", &e);
+        cell = Create(e);
+        p->Next = cell;
+        p = cell;
+    }
+    return L;
+}
+
+void Print_NotHead( List L ){
+    List p = L;
+    while (p->Next)
+    {
+        printf("%d ", p->Data);
+        p = p->Next;
+    }
+    printf("%d\n", p->Data);
+}
