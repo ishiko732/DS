@@ -17,6 +17,7 @@ Queue CreateQueue(int MaxSize){
     Q->Data=(ElementType*)malloc(MaxSize*sizeof(ElementType));
     Q->Front= 0;
     Q->Rear = 0;
+    Q->MaxSize=MaxSize;
     return Q;
 }
 
@@ -44,6 +45,6 @@ ElementType DeleteQ(Queue Q){
         return false;
     }else{
         Q->Front=(Q->Front+1)%Q->MaxSize;
-        return Q->Data[Q->Front];;
+        return Q->Data[Q->Front];
     }
 }
