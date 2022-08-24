@@ -195,21 +195,37 @@ BinTree CreatBinTree()
     return BT;
 }
 
+int GetHeight(BinTree BT){
+    int HL,HR,MaxH;
+    if(BT){
+        HL=GetHeight(BT->Left);
+        HR=GetHeight(BT->Right);
+        MaxH=HL>HR?HL:HR;
+        return MaxH+1;
+    }
+    return 0;
+}
+
+void PreorderPrintLeaves(BinTree BT){
+    if(BT){
+        if(!BT->Left&&!BT->Right){
+            printf(" %c",BT->Data);
+        }
+        PreorderPrintLeaves(BT->Left);
+        PreorderPrintLeaves(BT->Right);
+    }
+}
+
+
 int main()
 {
     BinTree BT = CreatBinTree(); // ABCDFGI00E00H000000
-    printf("Inorder:");
-    InorderTraversal_Stack(BT);
-    printf("\n");
-    printf("Preorder:");
-    PreorderTraversal_Stack(BT);
-    printf("\n");
-    printf("Postorder:");
-    PostorderTraversal_Stack(BT);
-    printf("\n");
-    printf("Levelorder:");
-    LevelorderTraversal(BT);
-    printf("\n");
+    printf("Inorder:");InorderTraversal_Stack(BT);printf("\n");
+    printf("Preorder:");PreorderTraversal_Stack(BT);printf("\n");
+    printf("Postorder:");PostorderTraversal_Stack(BT);printf("\n");
+    printf("Levelorder:");LevelorderTraversal(BT);printf("\n");
+    printf("TreeHight:%d",GetHeight(BT));printf("\n");
+    printf("Leaves:"); PreorderPrintLeaves(BT);printf("\n");
     return 0;
 }
 /* 你的代码将被嵌在这里 */
