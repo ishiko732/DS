@@ -10,6 +10,7 @@ struct HNode{
 typedef Heap MaxHeap;
 typedef Heap MinHeap;
 #define MAXDATA 1000
+#define ERROR -1
 typedef enum{false,true} bool;
 
 MaxHeap CreateHeap(int MaxSize);
@@ -42,4 +43,32 @@ bool Insert(MaxHeap H,ElementType X){
     }
     H->Data[i]=X;
     return true;
+}
+
+bool IsEmpty(MaxHeap H){
+    return H->Size==0;
+}
+
+ElementType DeleteMax(MaxHeap H){
+    int Parent,Child;
+    ElementType MaxItem,X;
+    if(IsEmpty(H)){
+        printf("MaxHeap is empty!\n");
+        return ERROR;
+    }
+
+    MaxItem=H->Data[1];
+    X=H->Data[H->Size--];
+    for(Parent=1;Parent*2<=H->Size;Parent=Child){
+        Child=Parent*2;
+        if((Child!=H->Size)&&(H->Data[Child]<H->Data[Child+1]))
+            Child++;// 指向右儿子
+        if(H->Data[Child]<=X){ // 如果该结点小于X,则结束交换父子结点
+            break;
+        }else{
+            H->Data[Parent]=H->Data[Child]; //交换父子结点
+        }
+    }
+    H->Data[Parent]=X; // 插入正确的位置
+    return MaxItem;
 }
