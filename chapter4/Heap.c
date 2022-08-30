@@ -72,3 +72,28 @@ ElementType DeleteMax(MaxHeap H){
     H->Data[Parent]=X; // 插入正确的位置
     return MaxItem;
 }
+
+void PercDown(MaxHeap H,int p){ //与删除堆类似
+    int Parent,Child;
+    ElementType X;
+
+    X=H->Data[p];
+    for(Parent=p;Parent*2<=H->Size;Parent=Child){
+        Child=Parent*2;
+        if((Child!=H->Size)&&(H->Data[Child]<H->Data[Child+1]))
+            Child++;
+        if(H->Data[Child]<=X){
+            break;
+        }else{
+            H->Data[Parent]=H->Data[Child];
+        }
+    }
+    H->Data[Parent]=X;
+}
+
+void BuildHeap(MaxHeap H){
+    int i;
+    for(i=H->Size/2;i>0;i--){
+        PercDown(H,i);
+    }
+}
