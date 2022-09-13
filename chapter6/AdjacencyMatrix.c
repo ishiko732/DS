@@ -67,3 +67,44 @@ MGraph BuildGraph(){
     }
     return Graph;
 }
+
+typedef enum {false,true} bool;
+static bool Visited[MaxVertexNum]={0,};
+#include "Queue_op.c"
+bool IsEdge(MGraph Graph,Vertex V,Vertex W){
+    return Graph->G[V][W]<INFINITY?true:false;
+}
+
+void Visit(Vertex V){
+    printf("正在访问顶点%d\n",V);
+}
+
+void DFS(MGraph Graph,Vertex V,void(*Visit)(Vertex)){
+    Visit(V);
+    Visited[V]=true;
+    for(int W=0;W<Graph->Nv;W++){
+        if(!Visited[Graph->G[V][W]]&&IsEdge(Graph,V,W)){
+            DFS(Graph,W,Visit); // 利用系统栈
+        }
+    }
+}
+
+void BFS(MGraph Graph,Vertex S,void(*Visit)(Vertex)){
+    Queue Q;
+    Vertex V,W;
+    Q=CreateQueue(MAXSIZE);
+
+    Visit(S);
+    Visited[S]=true;
+    AddQ(Q,S);
+    while(!isEmpty(Q)){
+        V=DeleteQ(Q);
+        for(W=0;W<Graph->Nv;W++){
+            if(!Visited[W]&&IsEdge(Graph,V,W)){
+                Visit(W);
+                Visited[W]=true;
+                AddQ(Q,W);
+            }
+        }
+    }
+}

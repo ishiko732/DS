@@ -35,6 +35,9 @@ struct GNode
 };
 typedef PtrToGNode LGraph;
 
+typedef enum{false,true} bool;
+static bool Visited[MaxVertexNum]={0,};
+
 LGraph CreateGraph(int VertexNum){
     Vertex V;
     LGraph Graph;
@@ -89,4 +92,40 @@ LGraph BuildGraph(){
         scanf("%c",&(Graph->G[V].Data));
     }
     return Graph;
+}
+
+#include "Queue_op.c"
+void Visit(Vertex V){
+    printf("正在访问顶点%d\n",V);
+}
+void DFS(LGraph Graph,Vertex V,void(*Visit)(Vertex)){
+    PtroToAdjVNode W;
+    Visit(V);
+    Visited[V]=true;
+    for(W=Graph->G[V].FirstEdge;W;W=W->Next){
+        if(!Visited[W->AdjV]){
+            DFS(Graph,W->AdjV,Visit);
+        }
+    }
+}
+void BFS(LGraph Graph,Vertex S,void(*Visit)(Vertex)){
+    Queue Q;
+    Vertex V,W;
+    PtroToAdjVNode WNode;
+    Q=CreateQueue(MAXSIZE);
+
+    Visit(S);
+    Visited[S]=true;
+    AddQ(Q,S);
+    while(!isEmpty(Q)){
+        V=DeleteQ(Q);
+        for(WNode=Graph->G[S].FirstEdge;WNode;WNode=WNode->Next){
+            W=WNode->AdjV;
+            if(!Visited[W]){
+                Visit(W);
+                Visited[W]=true;
+                AddQ(Q,W);
+            }
+        }
+    }
 }
