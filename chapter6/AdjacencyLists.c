@@ -26,14 +26,14 @@ typedef struct VNode{
     DataType Data;
 } *AdjList;
 
-typedef struct GNode* PtrToGNode;
-struct GNode
+typedef struct LGNode* PtrToLGNode;
+struct LGNode
 {
     int Nv;
     int Ne;
     AdjList G;
 };
-typedef PtrToGNode LGraph;
+typedef PtrToLGNode LGraph;
 
 typedef enum{false,true} bool;
 static bool Visited[MaxVertexNum]={0,};
@@ -42,7 +42,7 @@ LGraph CreateGraph(int VertexNum){
     Vertex V;
     LGraph Graph;
 
-    Graph=(LGraph)malloc(sizeof(struct GNode));
+    Graph=(LGraph)malloc(sizeof(struct LGNode));
     Graph->Nv=VertexNum;
     Graph->Ne=0;
     Graph->G=(AdjList)malloc(sizeof(struct VNode)*VertexNum);
