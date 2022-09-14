@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+#ifndef MAXN
 #define MAXN 1000
+#endif
 #ifndef ElementType
 typedef int ElementType;
 #endif
