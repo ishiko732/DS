@@ -1,0 +1,53 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include "InsertSort.c"
+
+#ifndef bool
+typedef enum{false,true} bool;
+#endif
+#ifndef Cutoff
+#define Cutoff 100
+#endif
+ElementType Median3(ElementType A[],int Left,int Right){
+    int Center=(Left+Right)/2;
+    if(A[Left]>A[Center]){
+        Swap(&A[Left],&A[Center]);
+    }
+    if(A[Left]>A[Right]){
+        Swap(&A[Left],&A[Right]);
+    }
+    if(A[Center]>A[Right]){
+        Swap(&A[Center],&A[Right]);
+    }
+    // A[Left]<=A[Center]<=A[Right]
+    Swap(&A[Center],&A[Right-1]);
+    return A[Right-1];
+}
+void Qsort(ElementType A[],int Left,int Right){
+    int Pivot,Low,High;
+    if(Cutoff<=Right-Left){
+        Pivot=Median3(A,Left,Right); // 选主元
+        // 划分子集
+        Low=Left;
+        High=Right-1;
+        while(1){
+            while(A[++Low]<Pivot);
+            while(A[--High]>Pivot);
+            if(Low<High){
+                Swap(&A[Low],&A[High]);
+            }else{
+                break;
+            }
+        }
+        Swap(&A[Low],&A[Right-1]);
+        // 递归处理
+        Qsort(A,Left,Low-1);
+        Qsort(A,Low+1,Right);
+    }else{
+        InsertionSort(A+Left,Right-Left+1);
+    }
+}
+
+void QuickSort(ElementType A[],int N){
+    Qsort(A,0,N-1);
+}
