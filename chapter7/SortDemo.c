@@ -1,3 +1,4 @@
+#include "Sort.h"
 #include "SimpleSelectionSort.c"
 #include "InsertSort.c"
 #include "BubbleSort.c"

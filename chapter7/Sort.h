@@ -11,11 +11,10 @@ typedef int ElementType;
 typedef enum{false,true} bool;
 #endif
 
-#ifdef Swap
 void Swap(ElementType* a,ElementType* b){
     ElementType t=*a;
     *a=*b;
     *b=t;
 }
-#endif
+
 #endif
