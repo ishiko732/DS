@@ -1,10 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include "InsertSort.c"
-
-#ifndef bool
-typedef enum{false,true} bool;
-#endif
+#include "Sort.h"
 #ifndef Cutoff
 #define Cutoff 100
 #endif

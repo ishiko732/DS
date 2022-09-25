@@ -1,17 +1,5 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include "Sort.h"
 
-#ifndef ElementType
-typedef int ElementType;
-#endif
-#ifndef bool
-typedef enum{false,true} bool;
-#endif
-void Swap(ElementType* a,ElementType* b){
-    ElementType t=*a;
-    *a=*b;
-    *b=t;
-}
 
 void BubbleSort(ElementType A[],int N){
     int P,i;

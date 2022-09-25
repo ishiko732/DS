@@ -1,12 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-
-#ifndef ElementType
-typedef int ElementType;
-#endif
-#ifndef bool
-typedef enum{false,true} bool;
-#endif
+#include "Sort.h"
 
 
 #define MaxDigit 4

@@ -1,14 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-
-#ifndef ElementType
-typedef int ElementType;
-#endif
-void Swap(ElementType* a,ElementType* b){
-    ElementType t=*a;
-    *a=*b;
-    *b=t;
-}
+#include "Sort.h"
 
 void SimpleSelectionSort(ElementType A[],int N){
     int i,j,min;

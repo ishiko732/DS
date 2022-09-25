@@ -1,14 +1,5 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include "Sort.h"
 
-#ifndef ElementType
-typedef int ElementType;
-#endif
-void Swap(ElementType* a,ElementType* b){
-    ElementType t=*a;
-    *a=*b;
-    *b=t;
-}
 void PercDown(ElementType A[],int p,int N);
 void HeapSort(ElementType A[],int N);
 

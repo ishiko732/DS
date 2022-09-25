@@ -1,12 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-
-#ifndef ElementType
-typedef int ElementType;
-#endif
-#ifndef bool
-typedef enum{false,true} bool;
-#endif
+#include "Sort.h"
 void Merge(ElementType A[],ElementType TmpA[],int L,int R,int RightEnd);
 void Msort(ElementType A[],ElementType TmpA[],int L,int RightEnd);
 
