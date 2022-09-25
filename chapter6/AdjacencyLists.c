@@ -119,7 +119,7 @@ void BFS(LGraph Graph,Vertex S,void(*Visit)(Vertex)){
     AddQ(Q,S);
     while(!isEmpty(Q)){
         V=DeleteQ(Q);
-        for(WNode=Graph->G[S].FirstEdge;WNode;WNode=WNode->Next){
+        for(WNode=Graph->G[V].FirstEdge;WNode;WNode=WNode->Next){
             W=WNode->AdjV;
             if(!Visited[W]){
                 Visit(W);

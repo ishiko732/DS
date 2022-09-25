@@ -58,7 +58,7 @@ MGraph BuildGraph(){
     if(Graph->Ne!=0){
         E=(Edge)malloc(sizeof(struct ENode));
         for(i=0;i<Graph->Ne;i++){
-            scanf("%d %d %d",&E->V1,&E->V1,&E->V2);
+            scanf("%d %d %d",&E->V1,&E->V2,&E->Weight);
             InsertEdge(Graph,E);
         }
     }
