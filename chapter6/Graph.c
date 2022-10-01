@@ -198,6 +198,15 @@ void DFS(LGraph Graph,Vertex V,void(*Visit)(Vertex)){
     }
 }
 
+void DFS_Traverse(LGraph Graph){ // 生成连通分量
+    ResetVisted();// 置空
+    for(int vertex=0;Graph->Nv;vertex++){
+        if(!Visited[vertex]){ // 未被访问过
+            DFS(Graph,vertex,Visit);
+        }
+    }
+}
+
 void BFS(LGraph Graph,Vertex S,void(*Visit)(Vertex)){
     Vertex V,W;
     PtroToAdjVNode WNode;
@@ -218,6 +227,15 @@ void BFS(LGraph Graph,Vertex S,void(*Visit)(Vertex)){
                 // Q2=(Q2+1)%MaxVertexNum;
                 Q[Q2++]=W;
             }
+        }
+    }
+}
+
+void BFS_Traverse(LGraph Graph){ // 生成连通分量
+    ResetVisted();// 置空
+    for(int vertex=0;Graph->Nv;vertex++){
+        if(!Visited[vertex]){ // 未被访问过
+            BFS(Graph,vertex,Visit);
         }
     }
 }
