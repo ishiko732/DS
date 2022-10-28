@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
+#ifndef TreeType
 typedef BinTree TreeType;
+#endif 
 typedef struct QNode* PtrToQNode;
 struct QNode{
     TreeType* Data;
@@ -8,7 +10,6 @@ struct QNode{
     int MaxSize;
 };
 typedef PtrToQNode Queue;
-
 Queue CreateQueue(int MaxSize){
     Queue Q=(Queue)malloc(sizeof(struct QNode));
     Q->Data=(TreeType*)malloc(MaxSize*sizeof(TreeType));
